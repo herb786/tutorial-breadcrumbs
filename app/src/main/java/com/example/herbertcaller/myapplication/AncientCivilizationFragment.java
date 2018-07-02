@@ -43,9 +43,10 @@ public class AncientCivilizationFragment extends Fragment {
         egyptHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                storeActivity.breadcrumbTextView.setText("Store>History>AncientCivilization>Egypt");
+                storeActivity.breadcrumbTextView.setText("Store > History > Ancient Civilization > Egypt");
                 getChildFragmentManager()
                         .beginTransaction()
+                        .addToBackStack("EgyptFragment")
                         .add(R.id.ancientCivilizationContainer, new EgyptFragment(), "EgyptFragment")
                         .commit();
             }
@@ -54,9 +55,10 @@ public class AncientCivilizationFragment extends Fragment {
         sumerHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                storeActivity.breadcrumbTextView.setText("Store>History>AncientCivilization>Sumer");
+                storeActivity.breadcrumbTextView.setText("Store > History > Ancient Civilization > Sumer");
                 getChildFragmentManager()
                         .beginTransaction()
+                        .addToBackStack("SumerFragment")
                         .add(R.id.ancientCivilizationContainer, new SumerFragment(), "SumerFragment")
                         .commit();
             }

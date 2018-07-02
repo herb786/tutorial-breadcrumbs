@@ -37,9 +37,10 @@ public class HistoryFragment extends Fragment {
         ancientCivilizationHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                storeActivity.breadcrumbTextView.setText("Store>History");
+                storeActivity.breadcrumbTextView.setText("Store > History > Ancient Civilization");
                 getChildFragmentManager()
                         .beginTransaction()
+                        .addToBackStack("AncientCivilizationFragment")
                         .add(R.id.historyContainer, new AncientCivilizationFragment(), "AncientCivilizationFragment")
                         .commit();
             }
