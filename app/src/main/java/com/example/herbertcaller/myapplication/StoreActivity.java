@@ -37,10 +37,35 @@ public class StoreActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        //popFragmentOnBackPressed();
+        popFragmentOnBackPressedUsingId();
+    }
+
+    private void popFragmentOnBackPressedUsingId(){
+        Fragment lastFragment = null;
+        Fragment firstFragment = getSupportFragmentManager().findFragmentById(R.id.storeContainer);
+        Fragment beforeLastFragment = getSupportFragmentManager().findFragmentById(R.id.historyContainer);
+        if (beforeLastFragment != null)
+            lastFragment = beforeLastFragment.getChildFragmentManager().findFragmentById(R.id.ancientCivilizationContainer);
+        if (lastFragment != null){
+            breadcrumbTextView.setText("Store > History > Ancient Civilization");
+            lastFragment.getFragmentManager().popBackStack();
+        } else if (beforeLastFragment != null) {
+            breadcrumbTextView.setText("Store > History");
+            beforeLastFragment.getFragmentManager().popBackStack();
+        } else if (firstFragment != null) {
+            breadcrumbTextView.setText("Store");
+            firstFragment.getFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    private void popFragmentOnBackPressed(){
         int stemFragmentCount = getSupportFragmentManager().getBackStackEntryCount();
         if (stemFragmentCount > 0) {
             // Use container Id to find fragment
-            Fragment stemFragment = getSupportFragmentManager().findFragmentById(R.id.storeContainer);
+            Fragment stemFragment = getSupportFragmentManager().findFragmentByTag("HistoryFragment");
             int branchFragmentCount = stemFragment.getChildFragmentManager().getBackStackEntryCount();
             if (branchFragmentCount > 0) {
                 // Use tag to find fragment
@@ -61,4 +86,5 @@ public class StoreActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
+
 }

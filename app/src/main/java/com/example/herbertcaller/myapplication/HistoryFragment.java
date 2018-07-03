@@ -38,11 +38,18 @@ public class HistoryFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 storeActivity.breadcrumbTextView.setText("Store > History > Ancient Civilization");
+                getFragmentManager()
+                        .beginTransaction()
+                        .addToBackStack("AncientCivilizationFragment")
+                        .add(R.id.historyContainer, new AncientCivilizationFragment(), "AncientCivilizationFragment")
+                        .commit();
+                /*
                 getChildFragmentManager()
                         .beginTransaction()
                         .addToBackStack("AncientCivilizationFragment")
                         .add(R.id.historyContainer, new AncientCivilizationFragment(), "AncientCivilizationFragment")
                         .commit();
+                */
             }
         });
         return view;

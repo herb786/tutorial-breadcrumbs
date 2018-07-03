@@ -40,6 +40,22 @@ public class AncientCivilizationFragment extends Fragment {
         egyptHome = view.findViewById(R.id.egyptHome);
         sumerHome = view.findViewById(R.id.sumerHome);
 
+        final EgyptFragment egyptFragment = new EgyptFragment();
+        final SumerFragment sumerFragment = new SumerFragment();
+
+        /*
+        getChildFragmentManager()
+                .beginTransaction()
+                .add(R.id.ancientCivilizationContainer, egyptFragment, "EgyptFragment")
+                .commit();
+
+        getChildFragmentManager()
+                .beginTransaction()
+                .setPrimaryNavigationFragment(egyptFragment)
+                .add(R.id.ancientCivilizationContainer, sumerFragment, "SumerFragment")
+                .commit();
+                */
+
         egyptHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,7 +63,9 @@ public class AncientCivilizationFragment extends Fragment {
                 getChildFragmentManager()
                         .beginTransaction()
                         .addToBackStack("EgyptFragment")
-                        .add(R.id.ancientCivilizationContainer, new EgyptFragment(), "EgyptFragment")
+                        .add(R.id.ancientCivilizationContainer, egyptFragment, "EgyptFragment")
+                        //.show(egyptFragment)
+                        //.hide(sumerFragment)
                         .commit();
             }
         });
@@ -59,7 +77,9 @@ public class AncientCivilizationFragment extends Fragment {
                 getChildFragmentManager()
                         .beginTransaction()
                         .addToBackStack("SumerFragment")
-                        .add(R.id.ancientCivilizationContainer, new SumerFragment(), "SumerFragment")
+                        .add(R.id.ancientCivilizationContainer, sumerFragment, "SumerFragment")
+                        //.show(sumerFragment)
+                        //.hide(egyptFragment)
                         .commit();
             }
         });
