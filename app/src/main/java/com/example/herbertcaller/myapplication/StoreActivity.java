@@ -64,7 +64,6 @@ public class StoreActivity extends AppCompatActivity {
     private void popFragmentOnBackPressedUsingTag(){
         int stemFragmentCount = getSupportFragmentManager().getBackStackEntryCount();
         if (stemFragmentCount > 0) {
-            // Use container Id to find fragment
             Fragment stemFragment = getSupportFragmentManager().findFragmentByTag("HistoryFragment");
             int branchFragmentCount = stemFragment.getChildFragmentManager().getBackStackEntryCount();
             if (branchFragmentCount > 0) {
